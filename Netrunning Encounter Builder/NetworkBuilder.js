@@ -42,6 +42,18 @@ let systems = [
   "Automated Turrets",
 ];
 
+let basicIce = [
+  "Fire Wall",
+  "Great Wall",
+  "Hadrian's Wall",
+  "Ice Wall",
+  "Heimdall 1.0",
+  "Sentinel",
+  "Authenticator",
+];
+let advancedIce = ["Archer", "Enigma", "Pop-up", "Syn 2.2", "Tollbooth"];
+let extremeIce = ["Janus 1.0", "Shinobi", "Victor 2.0"];
+
 //just testing to see if it can grab one of the items from the systems array
 //console.log(systems[Math.floor(Math.random() * systems.length)]);
 let j = Math.floor(Math.random() * systems.length);
