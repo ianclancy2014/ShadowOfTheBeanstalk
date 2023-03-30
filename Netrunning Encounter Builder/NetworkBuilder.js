@@ -5,6 +5,12 @@
 // Version 1.0 is going to allow the GM to select a network type (building, remote site, apartment,
 // small office, bar, etc.) select a size (large network, small network, etc.) and difficulty (how
 // generally difficult the ICE protecting the nodes of the network will be)
+// There's also going to be a network 'size' function that will determine how many nodes are on a
+// network. That'll limit how much ice there is protection different parts of it, and the systems
+// that are needed for the game can be 'stacked' behind systems already accessed. So if a player goes
+// "I'm looking for the lights" but the tool didn't generate that part, you can say "oh it's behind this
+// other system you already accessed lol", but it's going to be basic for now and can be expanded upon
+// and refined for future versions of the tool
 //
 // I'm still learning the way running network encounters works in SotB, so this project may
 // be a little wonky as I build it
@@ -59,6 +65,22 @@ let extremeIce = ["Janus 1.0", "Shinobi", "Victor 2.0"];
 let j = Math.floor(Math.random() * systems.length);
 console.log(j);
 console.log(systems[j]);
+
+//This is a temporary function that'll determine difficulty of network until I can
+//  build the part of the tool that takes input from the user
+function determineDifficulty() {
+  let difficultyLevel = Math.floor(Math.random() * 5 + 1);
+  return difficultyLevel;
+  // console.log("The difficulty of this networm is " + difficultyLevel);
+}
+// determineDifficulty();
+
+//This is going to be the draft for the main function that will 'build' the network.
+//  I'm probably going to rename it or split it into multiple functions or something
+//  but that'll be seen after I work on it a bit
+function buildNetwork() {
+  determineDifficulty();
+}
 
 //next:
 /*
