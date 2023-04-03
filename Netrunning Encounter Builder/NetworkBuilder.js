@@ -32,6 +32,11 @@ let i = Math.floor(Math.random() * 10 + 1);
 console.log(i);
 console.log("Begin Program:");
 
+let difficultyLevel = 0;
+let networkBaseLevel = 7;
+let d = 0;
+let builtNetwork = [];
+
 let systems = [
   "Lights",
   "Emergency Lights",
@@ -69,7 +74,8 @@ console.log(systems[j]);
 //This is a temporary function that'll determine difficulty of network until I can
 //  build the part of the tool that takes input from the user
 function determineDifficulty() {
-  let difficultyLevel = Math.floor(Math.random() * 5 + 1);
+  difficultyLevel = Math.floor(Math.random() * 5 + 1);
+  console.log("Difficulty level " + difficultyLevel);
   return difficultyLevel;
   // console.log("The difficulty of this networm is " + difficultyLevel);
 }
@@ -80,7 +86,27 @@ function determineDifficulty() {
 //  but that'll be seen after I work on it a bit
 function buildNetwork() {
   determineDifficulty();
+  determineNetworkSize();
 }
+
+function determineNetworkSize() {
+  //This next part is just <6 for now, but will change once I have the details more ironed out
+  if (difficultyLevel < 6) {
+    d = Math.floor(Math.random() * networkBaseLevel + 1);
+  }
+  while (d > 1) {
+    //basic iteration is done but I need to make it so it doesn't repeat selections, and so it
+    //randomizes the number between 1 and 7 AND subtracts each time
+    j = Math.floor(Math.random() * systems.length);
+    console.log(systems[j]);
+    builtNetwork.push(systems[j]);
+    d = d - 1;
+    console.log(builtNetwork);
+  }
+  console.log("D is " + d);
+}
+
+buildNetwork();
 
 //next:
 /*
