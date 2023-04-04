@@ -92,7 +92,7 @@ function buildNetwork() {
 function determineNetworkSize() {
   //This next part is just <6 for now, but will change once I have the details more ironed out
   if (difficultyLevel < 6) {
-    d = Math.floor(Math.random() * networkBaseLevel + 1);
+    d = Math.floor(Math.random() * networkBaseLevel + 2); //put +2 because if it was =1 it wouldn't trigger
   }
   while (d > 1) {
     //basic iteration is done but I need to make it so it doesn't repeat selections, and so it
@@ -103,7 +103,7 @@ function determineNetworkSize() {
     d = d - 1;
     console.log(builtNetwork);
   }
-  console.log("D is " + d);
+  // console.log("D is " + d);
 }
 
 buildNetwork();
