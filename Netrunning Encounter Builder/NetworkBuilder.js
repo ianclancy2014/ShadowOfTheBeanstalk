@@ -99,6 +99,13 @@ function determineNetworkSize() {
     //randomizes the number between 1 and 7 AND subtracts each time
     j = Math.floor(Math.random() * systems.length);
     console.log(systems[j]);
+    for (const item of builtNetwork) {
+      //trying to get it to not add the new one if it already exists
+      if (item == systems[j]) {
+        console.log("repetition"); // probably going ot have to move some of the code portions around to get it to work
+        break;
+      }
+    }
     builtNetwork.push(systems[j]);
     d = d - 1;
     console.log(builtNetwork);
