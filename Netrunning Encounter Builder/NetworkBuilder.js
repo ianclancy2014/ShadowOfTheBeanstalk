@@ -113,7 +113,41 @@ function determineNetworkSize() {
   // console.log("D is " + d);
 }
 
+/*
+function determineNetworkSize() {
+  //This next part is just <6 for now, but will change once I have the details more ironed out
+  if (difficultyLevel < 6) {
+    d = Math.floor(Math.random() * networkBaseLevel + 2); //put +2 because if it was =1 it wouldn't trigger
+  }
+  while (d > 1) {
+    //basic iteration is done but I need to make it so it doesn't repeat selections, and so it
+    //randomizes the number between 1 and 7 AND subtracts each time
+    j = Math.floor(Math.random() * systems.length);
+    console.log(systems[j]);
+    for (const item of builtNetwork) {
+      //trying to get it to not add the new one if it already exists
+      if (item == systems[j]) {
+        console.log("repetition"); // probably going ot have to move some of the code portions around to get it to work
+        break;
+      }
+    }
+    builtNetwork.push(systems[j]);
+    d = d - 1;
+    console.log(builtNetwork);
+  }
+  // console.log("D is " + d);
+}
+*/
+
+//Second attempt at build network function
+function buildNetwork2() {
+  console.log("Second Function Beginning");
+  j = Math.floor(Math.random() * systems.length);
+  console.log(systems[j]);
+}
+
 buildNetwork();
+buildNetwork2();
 
 //next:
 /*
