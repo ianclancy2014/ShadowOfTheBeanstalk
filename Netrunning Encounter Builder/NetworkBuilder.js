@@ -33,7 +33,7 @@ console.log(i);
 console.log("Begin Program:");
 
 let difficultyLevel = 0;
-let networkBaseLevel = 7;
+let networkBaseLevel = 2;
 let d = 0;
 let builtNetwork = [];
 
@@ -113,37 +113,30 @@ function determineNetworkSize() {
   // console.log("D is " + d);
 }
 
-/*
-function determineNetworkSize() {
-  //This next part is just <6 for now, but will change once I have the details more ironed out
-  if (difficultyLevel < 6) {
-    d = Math.floor(Math.random() * networkBaseLevel + 2); //put +2 because if it was =1 it wouldn't trigger
-  }
-  while (d > 1) {
-    //basic iteration is done but I need to make it so it doesn't repeat selections, and so it
-    //randomizes the number between 1 and 7 AND subtracts each time
-    j = Math.floor(Math.random() * systems.length);
-    console.log(systems[j]);
-    for (const item of builtNetwork) {
-      //trying to get it to not add the new one if it already exists
-      if (item == systems[j]) {
-        console.log("repetition"); // probably going ot have to move some of the code portions around to get it to work
-        break;
-      }
-    }
-    builtNetwork.push(systems[j]);
-    d = d - 1;
-    console.log(builtNetwork);
-  }
-  // console.log("D is " + d);
-}
-*/
-
+let insideList = false;
 //Second attempt at build network function
+//Something still ain't right, smh
 function buildNetwork2() {
   console.log("Second Function Beginning");
-  j = Math.floor(Math.random() * systems.length);
-  console.log(systems[j]);
+  while (networkBaseLevel > 0) {
+    j = Math.floor(Math.random() * systems.length - 1);
+    for (let item of builtNetwork) {
+      if (item == systems[j]) {
+        insideList = true;
+      } else {
+        insideList = false;
+        // builtNetwork.push(systems[j]);
+      }
+      if (insideList == false) {
+        builtNetwork.push(systems[j]);
+      } else if (insideList == true) {
+        continue;
+      }
+    }
+    networkBaseLevel = networkBaseLevel - 1;
+  }
+  console.log(builtNetwork);
+  // j = Math.floor(Math.random() * systems.length);
 }
 
 buildNetwork();
