@@ -158,6 +158,9 @@ function buildNetwork3() {
         z.push(x);
       }
     }
+    /* Put a function in here that serves to randomize the number, then have it called again
+    if the item matches; IOW, create a function that selects a random item from the list
+    and call it anytime it's needed inside this function*/
     x = x - 1;
   }
   console.log(z);
