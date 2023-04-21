@@ -28,14 +28,15 @@ Steps I'm going to take:
 */
 
 //randomizes a number between 1 and 10
-let i = Math.floor(Math.random() * 10 + 1);
-console.log(i);
+// let i = Math.floor(Math.random() * 10 + 1);
+// console.log(i);
 console.log("Begin Program:");
 
 let difficultyLevel = 0;
 let networkBaseLevel = 2;
 let d = 0;
 let builtNetwork = [];
+let j = 0;
 
 let systems = [
   "Lights",
@@ -64,12 +65,6 @@ let basicIce = [
 ];
 let advancedIce = ["Archer", "Enigma", "Pop-up", "Syn 2.2", "Tollbooth"];
 let extremeIce = ["Janus 1.0", "Shinobi", "Victor 2.0"];
-
-//just testing to see if it can grab one of the items from the systems array
-//console.log(systems[Math.floor(Math.random() * systems.length)]);
-let j = Math.floor(Math.random() * systems.length);
-console.log(j);
-console.log(systems[j]);
 
 //This is a temporary function that'll determine difficulty of network until I can
 //  build the part of the tool that takes input from the user
@@ -141,33 +136,45 @@ function buildNetwork2() {
 
 //The logc for below, which is my THIRD attempt works so far. Need to implement it with the correct
 // lists, etc though
-let x = 4;
+let x = 5;
 let z = ["Sewage"];
-let insideList2 = true;
+let insideList2 = false;
 
-//The way it's written it's adding as many items to the list as there are already items in the list
-function buildNetwork3() {
-  console.log("***Third Function Beginning***");
-  while (x > 0) {
-    for (let item of z) {
-      if (item == x) {
-        console.log(insideList2);
-        continue;
-      } else {
-        console.log("Else");
-        z.push(x);
-      }
-    }
-    /* Put a function in here that serves to randomize the number, then have it called again
-    if the item matches; IOW, create a function that selects a random item from the list
-    and call it anytime it's needed inside this function*/
-    x = x - 1;
-  }
-  console.log(z);
+function selectArrayItem() {
+  j = Math.floor(Math.random() * systems.length);
+  return j;
 }
 
-buildNetwork();
-buildNetwork2();
+// Sorted the issue of it adding items based on how many items are already in the Array
+//Now it just stops at 2 items without any repeats
+function buildNetwork3() {
+  console.log("***Third Function Beginning***");
+  selectArrayItem();
+  console.log(systems[j]);
+  builtNetwork.push(systems[j]);
+  while (x > 1) {
+    while (insideList2 == false) {
+      selectArrayItem();
+      for (let item of builtNetwork) {
+        if (item == systems[j]) {
+          console.log("If");
+          insideList2 = true;
+        } else {
+          console.log("Else");
+          builtNetwork.push(systems[j]);
+        }
+      }
+      /* Put a function in here that serves to randomize the number, then have it called again
+    if the item matches; IOW, create a function that selects a random item from the list
+    and call it anytime it's needed inside this function*/
+    }
+    x = x - 1;
+  }
+  console.log(builtNetwork);
+}
+
+// buildNetwork();
+// buildNetwork2();
 buildNetwork3();
 
 //next:
