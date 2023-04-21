@@ -139,8 +139,29 @@ function buildNetwork2() {
   // j = Math.floor(Math.random() * systems.length);
 }
 
+//The logc for below, which is my THIRD attempt works so far. Need to implement it with the correct
+// lists, etc though
+let x = "HVAC";
+let z = ["Sewage"];
+let insideList2 = true;
+
+function buildNetwork3() {
+  console.log("***Third Function Beginning***");
+  for (let item of z) {
+    if (item == x) {
+      console.log(insideList2);
+      continue;
+    } else {
+      console.log("Else");
+      z.push(x);
+    }
+  }
+  console.log(z);
+}
+
 buildNetwork();
 buildNetwork2();
+buildNetwork3();
 
 //next:
 /*
