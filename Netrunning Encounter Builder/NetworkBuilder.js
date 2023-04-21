@@ -141,20 +141,24 @@ function buildNetwork2() {
 
 //The logc for below, which is my THIRD attempt works so far. Need to implement it with the correct
 // lists, etc though
-let x = "HVAC";
+let x = 4;
 let z = ["Sewage"];
 let insideList2 = true;
 
+//The way it's written it's adding as many items to the list as there are already items in the list
 function buildNetwork3() {
   console.log("***Third Function Beginning***");
-  for (let item of z) {
-    if (item == x) {
-      console.log(insideList2);
-      continue;
-    } else {
-      console.log("Else");
-      z.push(x);
+  while (x > 0) {
+    for (let item of z) {
+      if (item == x) {
+        console.log(insideList2);
+        continue;
+      } else {
+        console.log("Else");
+        z.push(x);
+      }
     }
+    x = x - 1;
   }
   console.log(z);
 }
