@@ -145,6 +145,19 @@ function selectArrayItem() {
   return j;
 }
 
+function arrayChecker() {
+  for (let item of builtNetwork) {
+    if (item == systems[j]) {
+      console.log("If");
+      insideList2 = true;
+    } else {
+      console.log("Else");
+      builtNetwork.push(systems[j]);
+      insideList2 = false;
+    }
+  }
+}
+
 // Sorted the issue of it adding items based on how many items are already in the Array
 //Now it just stops at 2 items without any repeats
 function buildNetwork3() {
@@ -155,18 +168,7 @@ function buildNetwork3() {
   while (x > 1) {
     while (insideList2 == false) {
       selectArrayItem();
-      for (let item of builtNetwork) {
-        if (item == systems[j]) {
-          console.log("If");
-          insideList2 = true;
-        } else {
-          console.log("Else");
-          builtNetwork.push(systems[j]);
-        }
-      }
-      /* Put a function in here that serves to randomize the number, then have it called again
-    if the item matches; IOW, create a function that selects a random item from the list
-    and call it anytime it's needed inside this function*/
+      arrayChecker();
     }
     x = x - 1;
   }
