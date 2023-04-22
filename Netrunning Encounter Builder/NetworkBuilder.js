@@ -153,7 +153,8 @@ function arrayChecker() {
     } else {
       console.log("Else");
       builtNetwork.push(systems[j]);
-      insideList2 = false;
+      //Having the below line will fuck it up I believe
+      // insideList2 = false;
     }
   }
 }
