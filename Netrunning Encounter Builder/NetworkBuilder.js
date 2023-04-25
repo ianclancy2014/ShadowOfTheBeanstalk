@@ -33,10 +33,10 @@ Steps I'm going to take:
 console.log("Begin Program:");
 
 let difficultyLevel = 0;
-let networkBaseLevel = 2;
+let networkBaseLevel = 5;
 let d = 0;
 let builtNetwork = [];
-let j = 0;
+let insideList = true;
 
 let systems = [
   "Lights",
@@ -65,6 +65,9 @@ let basicIce = [
 ];
 let advancedIce = ["Archer", "Enigma", "Pop-up", "Syn 2.2", "Tollbooth"];
 let extremeIce = ["Janus 1.0", "Shinobi", "Victor 2.0"];
+
+let j = Math.floor(Math.random() * systems.length);
+let b = systems[j];
 
 //This is a temporary function that'll determine difficulty of network until I can
 //  build the part of the tool that takes input from the user
@@ -108,7 +111,6 @@ function determineNetworkSize() {
   // console.log("D is " + d);
 }
 
-let insideList = false;
 //Second attempt at build network function
 //Something still ain't right, smh
 function buildNetwork2() {
@@ -176,9 +178,39 @@ function buildNetwork3() {
   console.log(builtNetwork);
 }
 
+//***Fourth Attempt at the network builder function
+
+function iterator() {
+  for (let item of builtNetwork) {
+    if (item == b) {
+      insideList = false;
+    } else {
+      continue;
+    }
+  }
+}
+
+function buildNetwork4() {
+  while (networkBaseLevel > 0) {
+    b = systems[j]; //Had to tweek it slightly cuz numbers =/= srings
+    iterator();
+    if (insideList == true) {
+      builtNetwork.push(systems[j]);
+    } else {
+      networkBaseLevel = networkBaseLevel + 1;
+    }
+    insideList = true;
+    j = Math.floor(Math.random() * systems.length);
+    networkBaseLevel = networkBaseLevel - 1;
+    console.log(insideList);
+  }
+  console.log(builtNetwork);
+}
+
 // buildNetwork();
 // buildNetwork2();
-buildNetwork3();
+// buildNetwork3();
+buildNetwork4();
 
 //next:
 /*
