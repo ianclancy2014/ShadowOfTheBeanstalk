@@ -77,108 +77,6 @@ function determineDifficulty() {
   return difficultyLevel;
   // console.log("The difficulty of this networm is " + difficultyLevel);
 }
-// determineDifficulty();
-
-//This is going to be the draft for the main function that will 'build' the network.
-//  I'm probably going to rename it or split it into multiple functions or something
-//  but that'll be seen after I work on it a bit
-function buildNetwork() {
-  determineDifficulty();
-  determineNetworkSize();
-}
-
-function determineNetworkSize() {
-  //This next part is just <6 for now, but will change once I have the details more ironed out
-  if (difficultyLevel < 6) {
-    d = Math.floor(Math.random() * networkBaseLevel + 2); //put +2 because if it was =1 it wouldn't trigger
-  }
-  while (d > 1) {
-    //basic iteration is done but I need to make it so it doesn't repeat selections, and so it
-    //randomizes the number between 1 and 7 AND subtracts each time
-    j = Math.floor(Math.random() * systems.length);
-    console.log(systems[j]);
-    for (const item of builtNetwork) {
-      //trying to get it to not add the new one if it already exists
-      if (item == systems[j]) {
-        console.log("repetition"); // probably going ot have to move some of the code portions around to get it to work
-        break;
-      }
-    }
-    builtNetwork.push(systems[j]);
-    d = d - 1;
-    console.log(builtNetwork);
-  }
-  // console.log("D is " + d);
-}
-
-//Second attempt at build network function
-//Something still ain't right, smh
-function buildNetwork2() {
-  console.log("Second Function Beginning");
-  while (networkBaseLevel > 0) {
-    j = Math.floor(Math.random() * systems.length - 1);
-    for (let item of builtNetwork) {
-      if (item == systems[j]) {
-        insideList = true;
-      } else {
-        insideList = false;
-        // builtNetwork.push(systems[j]);
-      }
-      if (insideList == false) {
-        builtNetwork.push(systems[j]);
-      } else if (insideList == true) {
-        continue;
-      }
-    }
-    networkBaseLevel = networkBaseLevel - 1;
-  }
-  console.log(builtNetwork);
-  // j = Math.floor(Math.random() * systems.length);
-}
-
-//The logc for below, which is my THIRD attempt works so far. Need to implement it with the correct
-// lists, etc though
-let x = 5;
-let z = ["Sewage"];
-let insideList2 = false;
-
-function selectArrayItem() {
-  j = Math.floor(Math.random() * systems.length);
-  return j;
-}
-
-function arrayChecker() {
-  for (let item of builtNetwork) {
-    if (item == systems[j]) {
-      console.log("If");
-      insideList2 = true;
-    } else {
-      console.log("Else");
-      builtNetwork.push(systems[j]);
-      //Having the below line will fuck it up I believe
-      // insideList2 = false;
-    }
-  }
-}
-
-// Sorted the issue of it adding items based on how many items are already in the Array
-//Now it just stops at 2 items without any repeats
-function buildNetwork3() {
-  console.log("***Third Function Beginning***");
-  selectArrayItem();
-  console.log(systems[j]);
-  builtNetwork.push(systems[j]);
-  while (x > 1) {
-    while (insideList2 == false) {
-      selectArrayItem();
-      arrayChecker();
-    }
-    x = x - 1;
-  }
-  console.log(builtNetwork);
-}
-
-//***Fourth Attempt at the network builder function
 
 function iterator() {
   for (let item of builtNetwork) {
@@ -190,9 +88,9 @@ function iterator() {
   }
 }
 
-function buildNetwork4() {
+function buildNetwork() {
   while (networkBaseLevel > 0) {
-    b = systems[j]; //Had to tweek it slightly cuz numbers =/= srings
+    b = systems[j];
     iterator();
     if (insideList == true) {
       builtNetwork.push(systems[j]);
@@ -207,10 +105,7 @@ function buildNetwork4() {
   console.log(builtNetwork);
 }
 
-// buildNetwork();
-// buildNetwork2();
-// buildNetwork3();
-buildNetwork4();
+buildNetwork();
 
 //next:
 /*
@@ -222,4 +117,9 @@ buildNetwork4();
     ie. at 1, it randomly pulls from just Basic ICE, at 2 it pulls randomly from basic and HAS A CHANCE
     to pull from Advanced ICE, at 3 it pulls mostly from advanced and sometimes basic, at 4 it pulls from
     advanced and has a chance to pull from extreme, and at 5 it pulls mainly from extreme
+*/
+
+/*
+The part that fills in the built network based on a 'difficulty level' is done, next I need to build the 
+part that lets the user choos the difficulty, and it runs he program based on that.
 */
