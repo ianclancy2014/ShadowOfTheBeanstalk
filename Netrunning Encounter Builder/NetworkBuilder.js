@@ -38,6 +38,8 @@ let d = 0;
 let builtNetwork = [];
 let insideList = true;
 
+let tempDifficultyLevel = 0;
+
 let systems = [
   "Lights",
   "Emergency Lights",
@@ -78,6 +80,7 @@ function determineDifficulty() {
   // console.log("The difficulty of this networm is " + difficultyLevel);
 }
 
+//This function iterates through the built network Array
 function iterator() {
   for (let item of builtNetwork) {
     if (item == b) {
@@ -88,6 +91,7 @@ function iterator() {
   }
 }
 
+//This function builds the Network
 function buildNetwork() {
   while (networkBaseLevel > 0) {
     b = systems[j];
@@ -105,7 +109,20 @@ function buildNetwork() {
   console.log(builtNetwork);
 }
 
-buildNetwork();
+//*****Doesn't quite work yet. It goes one more in the direction it's going
+//based on what I'm clicking, like it has momentum or something
+//This section determines how the program handles the input for the buttons
+document.querySelector(".minusButton").addEventListener("click", function () {
+  document.querySelector(".difficultyOutput").textContent =
+    tempDifficultyLevel--;
+});
+
+document.querySelector(".plusButton").addEventListener("click", function () {
+  document.querySelector(".difficultyOutput").textContent =
+    tempDifficultyLevel++;
+});
+
+// buildNetwork();
 
 //next:
 /*
