@@ -122,6 +122,14 @@ document.querySelector(".plusButton").addEventListener("click", function () {
     tempDifficultyLevel++;
 });
 
+document
+  .querySelector(".generateButton")
+  .addEventListener("click", function () {
+    //This is the part that will handle the network generation part
+    //for now it just calls the basic "5" default function
+    buildNetwork();
+  });
+
 // buildNetwork();
 
 //next:
