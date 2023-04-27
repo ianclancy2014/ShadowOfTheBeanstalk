@@ -33,7 +33,7 @@ Steps I'm going to take:
 console.log("Begin Program:");
 
 let difficultyLevel = 0;
-let networkBaseLevel = 5;
+let networkBaseLevel = 0;
 let d = 0;
 let builtNetwork = [];
 let insideList = true;
@@ -113,13 +113,19 @@ function buildNetwork() {
 //based on what I'm clicking, like it has momentum or something
 //This section determines how the program handles the input for the buttons
 document.querySelector(".minusButton").addEventListener("click", function () {
-  document.querySelector(".difficultyOutput").textContent =
-    tempDifficultyLevel--;
+  document.querySelector(".difficultyOutput").textContent = networkBaseLevel--;
+  console.warn(`Network Base Level At ${networkBaseLevel}`);
+  // console.warn(tempDifficultyLevel);
+  //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
+  //but it isn't displaying correctly, so the problem might be elsewhere
 });
 
 document.querySelector(".plusButton").addEventListener("click", function () {
-  document.querySelector(".difficultyOutput").textContent =
-    tempDifficultyLevel++;
+  document.querySelector(".difficultyOutput").textContent = networkBaseLevel++;
+  console.warn(`Network Base Level At ${networkBaseLevel}`);
+  // console.warn(tempDifficultyLevel);
+  //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
+  //but it isn't displaying correctly, so the problem might be elsewhere
 });
 
 document
@@ -128,6 +134,8 @@ document
     //This is the part that will handle the network generation part
     //for now it just calls the basic "5" default function
     buildNetwork();
+    // builtNetwork = []; //This alone doesn't work in resetting it
+    console.warn(builtNetwork);
   });
 
 // buildNetwork();
