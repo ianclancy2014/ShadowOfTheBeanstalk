@@ -138,8 +138,6 @@ document
     console.warn(builtNetwork);
   });
 
-// buildNetwork();
-
 //next:
 /*
 1) List basic ICE
@@ -153,6 +151,8 @@ document
 */
 
 /*
-The part that fills in the built network based on a 'difficulty level' is done, next I need to build the 
-part that lets the user choos the difficulty, and it runs he program based on that.
+Next I need to make it so that:
+  1) A second array is built with the ICE that's the same length as the first array, real basic like
+  2) The mechanic that builds the second array, the ICE array, is more refined so that it
+    pulls from the different difficulty levels, so that it's not all just one type of ICE
 */
