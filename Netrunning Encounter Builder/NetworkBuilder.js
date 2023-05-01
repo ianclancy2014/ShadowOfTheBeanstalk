@@ -36,6 +36,7 @@ let difficultyLevel = 0;
 let networkBaseLevel = 0;
 let d = 0;
 let builtNetwork = [];
+let builtICE = [];
 let insideList = true;
 
 let tempDifficultyLevel = 0;
@@ -107,6 +108,17 @@ function buildNetwork() {
     console.log(insideList);
   }
   console.log(builtNetwork);
+  buildICE();
+  console.log("ICE Encountered: " + builtICE);
+}
+
+function buildICE() {
+  let z = Math.floor(Math.random() * basicIce.length);
+  while (builtICE.length < builtNetwork.length) {
+    console.log("Building ICE");
+    z = Math.floor(Math.random() * basicIce.length);
+    builtICE.push(basicIce[z]);
+  }
 }
 
 //*****Doesn't quite work yet. It goes one more in the direction it's going
