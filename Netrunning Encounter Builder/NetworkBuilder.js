@@ -39,8 +39,6 @@ let builtNetwork = [];
 let builtICE = [];
 let insideList = true;
 
-let tempDifficultyLevel = 0;
-
 let systems = [
   "Lights",
   "Emergency Lights",
@@ -74,12 +72,12 @@ let b = systems[j];
 
 //This is a temporary function that'll determine difficulty of network until I can
 //  build the part of the tool that takes input from the user
-function determineDifficulty() {
-  difficultyLevel = Math.floor(Math.random() * 5 + 1);
-  console.log("Difficulty level " + difficultyLevel);
-  return difficultyLevel;
-  // console.log("The difficulty of this networm is " + difficultyLevel);
-}
+// function determineDifficulty() {
+//   difficultyLevel = Math.floor(Math.random() * 5 + 1);
+//   console.log("Difficulty level " + difficultyLevel);
+//   return difficultyLevel;
+//   // console.log("The difficulty of this networm is " + difficultyLevel);
+// }
 
 //This function iterates through the built network Array
 function iterator() {
@@ -121,7 +119,23 @@ function buildICE() {
   }
 }
 
-//*****Doesn't quite work yet. It goes one more in the direction it's going
+//This will be the prototype for the 2 different selectors: the size and difficulty
+
+let tempNetworkSize = 4; //THis will be changed to the value that the user selects for size
+let tempDifficultyLevel = 2; //This will be changed to the value selected for difficulty
+
+function determineDifficulty() {
+  let baseICEValues = [];
+  while (baseICEValues.length < tempNetworkSize) {
+    let z = Math.floor(Math.random() * tempDifficultyLevel + 1);
+    baseICEValues.push(z);
+  }
+  console.log(`Basice ICE Values are: ${baseICEValues}`);
+}
+
+determineDifficulty();
+
+//*****Doesn't quite work yet in the UI. It goes one more in the direction it's going
 //based on what I'm clicking, like it has momentum or something
 //This section determines how the program handles the input for the buttons
 document.querySelector(".minusButton").addEventListener("click", function () {
