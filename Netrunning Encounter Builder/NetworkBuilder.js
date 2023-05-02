@@ -133,21 +133,41 @@ function determineDifficulty() {
   }
   for (let item of baseICEValues) {
     /*Should probably change this to a switch statement eventually, rather than an
-    if-else statement */
-    if (item == 1) {
-      //This is where the logic for selecting a difficulty 1 ICE will go
-      console.log("Difficulty 1!");
-    } else if (item == 2) {
-      //This is where the logic for selecthing a difficulty 2 ICE will go, etc
-      console.log("Difficulty 2!");
-    } else if (item == 3) {
-      console.log("Difficulty 3!");
-    } else if (item == 4) {
-      console.log("Difficulty 4!");
-    } else if (item == 5) {
-      console.log("Difficulty 5!");
-    } else {
-      console.log("Error");
+    if-else statement, but I'm not too sure because of the else,
+    which will account for anything <0 or >5, but that part can bemitigated
+    before we even get to this part honestly, like the funtions won't even
+    trigger if the difficulty's too high or too low */
+    // if (item == 1) {
+    //   //This is where the logic for selecting a difficulty 1 ICE will go
+    //   console.log("Difficulty 1!");
+    // } else if (item == 2) {
+    //   //This is where the logic for selecthing a difficulty 2 ICE will go, etc
+    //   console.log("Difficulty 2!");
+    // } else if (item == 3) {
+    //   console.log("Difficulty 3!");
+    // } else if (item == 4) {
+    //   console.log("Difficulty 4!");
+    // } else if (item == 5) {
+    //   console.log("Difficulty 5!");
+    // } else {
+    //   console.log("Error");
+    // }
+    switch (item) {
+      case 1:
+        console.log("Difficulty 1!");
+        break;
+      case 2:
+        console.log("Difficulty 2!");
+        break;
+      case 3:
+        console.log("Difficulty 3!");
+        break;
+      case 4:
+        console.log("Difficulty 4!");
+        break;
+      case 5:
+        console.log("Difficulty 5!");
+        break;
     }
   }
   console.log(`Basice ICE Values are: ${baseICEValues}`);
