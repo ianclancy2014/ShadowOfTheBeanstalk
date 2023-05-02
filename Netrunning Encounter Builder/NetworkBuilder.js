@@ -123,12 +123,30 @@ function buildICE() {
 
 let tempNetworkSize = 4; //THis will be changed to the value that the user selects for size
 let tempDifficultyLevel = 2; //This will be changed to the value selected for difficulty
+let tempBuiltICE = []; //This will be changed to the builtICE array
 
 function determineDifficulty() {
   let baseICEValues = [];
   while (baseICEValues.length < tempNetworkSize) {
     let z = Math.floor(Math.random() * tempDifficultyLevel + 1);
     baseICEValues.push(z);
+  }
+  for (let item of baseICEValues) {
+    if (item == 1) {
+      //This is where the logic for selecting a difficulty 1 ICE will go
+      console.log("Difficulty 1!");
+    } else if (item == 2) {
+      //This is where the logic for selecthing a difficulty 2 ICE will go, etc
+      console.log("Difficulty 2!");
+    } else if (item == 3) {
+      console.log("Difficulty 3!");
+    } else if (item == 4) {
+      console.log("Difficulty 4!");
+    } else if (item == 5) {
+      console.log("Difficulty 5!");
+    } else {
+      console.log("Error");
+    }
   }
   console.log(`Basice ICE Values are: ${baseICEValues}`);
 }
