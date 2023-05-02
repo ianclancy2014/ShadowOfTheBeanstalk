@@ -132,6 +132,8 @@ function determineDifficulty() {
     baseICEValues.push(z);
   }
   for (let item of baseICEValues) {
+    /*Should probably change this to a switch statement eventually, rather than an
+    if-else statement */
     if (item == 1) {
       //This is where the logic for selecting a difficulty 1 ICE will go
       console.log("Difficulty 1!");
