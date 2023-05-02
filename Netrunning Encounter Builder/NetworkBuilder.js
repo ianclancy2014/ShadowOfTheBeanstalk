@@ -122,7 +122,7 @@ function buildICE() {
 //This will be the prototype for the 2 different selectors: the size and difficulty
 
 let tempNetworkSize = 4; //THis will be changed to the value that the user selects for size
-let tempDifficultyLevel = 3; //This will be changed to the value selected for difficulty
+let tempDifficultyLevel = 5; //This will be changed to the value selected for difficulty
 let tempBuiltICE = []; //This will be changed to the builtICE array
 
 function determineDifficulty() {
@@ -136,44 +136,74 @@ function determineDifficulty() {
     let n = 0;
     switch (item) {
       case 1:
+        console.log("Difficulty 1!");
         n = Math.floor(Math.random() * basicIce.length);
         tempBuiltICE.push(basicIce[n]);
-        console.log("Difficulty 1!");
+        console.log("Basic ICE");
         break;
       case 2:
+        console.log("Difficulty 2!");
         //thinking of doing 60/40 split for this one from basic and medium
         m = Math.floor(Math.random() * 100);
         if (m <= 60) {
           n = Math.floor(Math.random() * basicIce.length);
           tempBuiltICE.push(basicIce[n]);
-          console.warn("2: Less than 60");
+          console.log("Basic ICE");
         } else if (m > 60) {
           n = Math.floor(Math.random() * advancedIce.length);
           tempBuiltICE.push(advancedIce[n]);
-          console.error("2: More than 60");
+          console.warn("Advanced ICE");
         }
-
-        console.log("Difficulty 2!");
         break;
       case 3:
+        console.log("Difficulty 3!");
         //Doing a 40/60 split in favor of advanced ICE
         m = Math.floor(Math.random() * 100);
         if (m <= 60) {
           n = Math.floor(Math.random() * advancedIce.length);
           tempBuiltICE.push(advancedIce[n]);
-          console.error("3: Less than 60");
+          console.warn("Advanced ICE");
         } else if (m > 60) {
           n = Math.floor(Math.random() * basicIce.length);
           tempBuiltICE.push(basicIce[n]);
-          console.warn("3: More than 60");
+          console.log("Basic ICE");
         }
-        console.log("Difficulty 3!");
         break;
       case 4:
         console.log("Difficulty 4!");
+        //20/70/10 split with basic/advanced/extreme but might fine tune this amount
+        m = Math.floor(Math.random() * 100);
+        if (m <= 20) {
+          n = Math.floor(Math.random() * basicIce.length);
+          tempBuiltICE.push(basicIce[n]);
+          console.log("Basic ICE");
+        } else if (m > 20 && m <= 90) {
+          n = Math.floor(Math.random() * advancedIce.length);
+          tempBuiltICE.push(advancedIce[n]);
+          console.warn("Advanced ICE");
+        } else if (m > 90) {
+          n = Math.floor(Math.random() * extremeIce.length);
+          tempBuiltICE.push(extremeIce[n]);
+          console.error("Extreme ICE");
+        }
         break;
       case 5:
         console.log("Difficulty 5!");
+        //10/60/30 split
+        m = Math.floor(Math.random() * 100);
+        if (m <= 10) {
+          n = Math.floor(Math.random() * basicIce.length);
+          tempBuiltICE.push(basicIce[n]);
+          console.log("Basic ICE");
+        } else if (m > 10 && m <= 70) {
+          n = Math.floor(Math.random() * advancedIce.length);
+          tempBuiltICE.push(advancedIce[n]);
+          console.warn("Advanced ICE");
+        } else if (m > 70) {
+          n = Math.floor(Math.random() * extremeIce.length);
+          tempBuiltICE.push(extremeIce[n]);
+          console.error("Extreme ICE");
+        }
         break;
     }
   }
