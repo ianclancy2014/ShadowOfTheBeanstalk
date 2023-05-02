@@ -122,7 +122,7 @@ function buildICE() {
 //This will be the prototype for the 2 different selectors: the size and difficulty
 
 let tempNetworkSize = 4; //THis will be changed to the value that the user selects for size
-let tempDifficultyLevel = 2; //This will be changed to the value selected for difficulty
+let tempDifficultyLevel = 3; //This will be changed to the value selected for difficulty
 let tempBuiltICE = []; //This will be changed to the builtICE array
 
 function determineDifficulty() {
@@ -132,34 +132,41 @@ function determineDifficulty() {
     baseICEValues.push(z);
   }
   for (let item of baseICEValues) {
-    /*Should probably change this to a switch statement eventually, rather than an
-    if-else statement, but I'm not too sure because of the else,
-    which will account for anything <0 or >5, but that part can bemitigated
-    before we even get to this part honestly, like the funtions won't even
-    trigger if the difficulty's too high or too low */
-    // if (item == 1) {
-    //   //This is where the logic for selecting a difficulty 1 ICE will go
-    //   console.log("Difficulty 1!");
-    // } else if (item == 2) {
-    //   //This is where the logic for selecthing a difficulty 2 ICE will go, etc
-    //   console.log("Difficulty 2!");
-    // } else if (item == 3) {
-    //   console.log("Difficulty 3!");
-    // } else if (item == 4) {
-    //   console.log("Difficulty 4!");
-    // } else if (item == 5) {
-    //   console.log("Difficulty 5!");
-    // } else {
-    //   console.log("Error");
-    // }
+    let m = 0;
+    let n = 0;
     switch (item) {
       case 1:
+        n = Math.floor(Math.random() * basicIce.length);
+        tempBuiltICE.push(basicIce[n]);
         console.log("Difficulty 1!");
         break;
       case 2:
+        //thinking of doing 60/40 split for this one from basic and medium
+        m = Math.floor(Math.random() * 100);
+        if (m <= 60) {
+          n = Math.floor(Math.random() * basicIce.length);
+          tempBuiltICE.push(basicIce[n]);
+          console.warn("2: Less than 60");
+        } else if (m > 60) {
+          n = Math.floor(Math.random() * advancedIce.length);
+          tempBuiltICE.push(advancedIce[n]);
+          console.error("2: More than 60");
+        }
+
         console.log("Difficulty 2!");
         break;
       case 3:
+        //Doing a 40/60 split in favor of advanced ICE
+        m = Math.floor(Math.random() * 100);
+        if (m <= 60) {
+          n = Math.floor(Math.random() * advancedIce.length);
+          tempBuiltICE.push(advancedIce[n]);
+          console.error("3: Less than 60");
+        } else if (m > 60) {
+          n = Math.floor(Math.random() * basicIce.length);
+          tempBuiltICE.push(basicIce[n]);
+          console.warn("3: More than 60");
+        }
         console.log("Difficulty 3!");
         break;
       case 4:
@@ -171,6 +178,7 @@ function determineDifficulty() {
     }
   }
   console.log(`Basice ICE Values are: ${baseICEValues}`);
+  console.log(tempBuiltICE);
 }
 
 determineDifficulty();
