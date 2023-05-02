@@ -167,4 +167,22 @@ Next I need to make it so that:
   1) A second array is built with the ICE that's the same length as the first array, real basic like
   2) The mechanic that builds the second array, the ICE array, is more refined so that it
     pulls from the different difficulty levels, so that it's not all just one type of ICE
+
+
+I need to split the Network Dificulty user selection into 2 different functions that work almost
+  the same way; one that allows the user to set the network size, and one that allows the user to 
+  set the network difficulty which will determine the random ICE that protects each node
+
+
+I need to have 2 selections for the user:
+  1) A selection for network size (how many nodes)
+  and
+  2) A selection for nework difficulty
+    The selection for difficulty will crate an aray the length of the network size, and
+    populate items with a value between 1 and the difficulty (max 5). A function will
+    run that checks what the value of each item in the array is, and then pulls randomly
+    from the respective ICE array based on the difficulty number. IE, a small, easy network
+    will have an array of [1,1] so the difficulty builder pulls two ICE from the basicICE array,
+    and a medium size medium difficulty network will be [1,3,2,1,2] and will pull from the respective
+    ICE arrays
 */
