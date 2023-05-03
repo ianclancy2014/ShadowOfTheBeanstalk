@@ -33,11 +33,14 @@ Steps I'm going to take:
 console.log("Begin Program:");
 
 let difficultyLevel = 0;
-let networkBaseLevel = 0;
+let networkSize = 0;
 let d = 0;
 let builtNetwork = [];
 let builtICE = [];
 let insideList = true;
+
+//hopefully temp variables
+let tempDifficultyLevel = 0;
 
 let systems = [
   "Lights",
@@ -91,23 +94,15 @@ function iterator() {
 }
 
 //This function builds the Network
+//It will eventually just be a calling the determinSize and determineDifficulty functions
 function buildNetwork() {
-  while (networkBaseLevel > 0) {
-    b = systems[j];
-    iterator();
-    if (insideList == true) {
-      builtNetwork.push(systems[j]);
-    } else {
-      networkBaseLevel = networkBaseLevel + 1;
-    }
-    insideList = true;
-    j = Math.floor(Math.random() * systems.length);
-    networkBaseLevel = networkBaseLevel - 1;
-    console.log(insideList);
-  }
+  tempDifficultyLevel = difficultyLevel;
+
+  determinSize();
   console.log(builtNetwork);
-  buildICE();
-  console.log("ICE Encountered: " + builtICE);
+  // buildICE();
+  // console.log("ICE Encountered: " + builtICE);
+  determineDifficulty();
 }
 
 function buildICE() {
@@ -122,8 +117,24 @@ function buildICE() {
 //This will be the prototype for the 2 different selectors: the size and difficulty
 
 let tempNetworkSize = 4; //THis will be changed to the value that the user selects for size
-let tempDifficultyLevel = 5; //This will be changed to the value selected for difficulty
+// let tempDifficultyLevel = 5; //This will be changed to the value selected for difficulty
 let tempBuiltICE = []; //This will be changed to the builtICE array
+
+function determinSize() {
+  while (difficultyLevel > 0) {
+    b = systems[j];
+    iterator();
+    if (insideList == true) {
+      builtNetwork.push(systems[j]);
+    } else {
+      difficultyLevel = difficultyLevel + 1;
+    }
+    insideList = true;
+    j = Math.floor(Math.random() * systems.length);
+    difficultyLevel = difficultyLevel - 1;
+    console.log(insideList);
+  }
+}
 
 function determineDifficulty() {
   let baseICEValues = [];
@@ -211,29 +222,33 @@ function determineDifficulty() {
   console.log(tempBuiltICE);
 }
 
-determineDifficulty();
+// determineDifficulty();
 
 //*****Doesn't quite work yet in the UI. It goes one more in the direction it's going
 //based on what I'm clicking, like it has momentum or something
 //This section determines how the program handles the input for the buttons
-document.querySelector(".minusButton").addEventListener("click", function () {
-  document.querySelector(".difficultyOutput").textContent = networkBaseLevel--;
-  console.warn(`Network Base Level At ${networkBaseLevel}`);
-  // console.warn(tempDifficultyLevel);
-  //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
-  //but it isn't displaying correctly, so the problem might be elsewhere
-});
-
-document.querySelector(".plusButton").addEventListener("click", function () {
-  document.querySelector(".difficultyOutput").textContent = networkBaseLevel++;
-  console.warn(`Network Base Level At ${networkBaseLevel}`);
-  // console.warn(tempDifficultyLevel);
-  //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
-  //but it isn't displaying correctly, so the problem might be elsewhere
-});
+document
+  .querySelector(".difficultyMinusButton")
+  .addEventListener("click", function () {
+    document.querySelector(".difficultyOutput").textContent = difficultyLevel--;
+    console.warn(`Network Base Level At ${difficultyLevel}`);
+    // console.warn(tempDifficultyLevel);
+    //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
+    //but it isn't displaying correctly, so the problem might be elsewhere
+  });
 
 document
-  .querySelector(".generateButton")
+  .querySelector(".difficultyPlusButton")
+  .addEventListener("click", function () {
+    document.querySelector(".difficultyOutput").textContent = difficultyLevel++;
+    console.warn(`Network Base Level At ${difficultyLevel}`);
+    // console.warn(tempDifficultyLevel);
+    //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
+    //but it isn't displaying correctly, so the problem might be elsewhere
+  });
+
+document
+  .querySelector(".difficultyGenerateButton")
   .addEventListener("click", function () {
     //This is the part that will handle the network generation part
     //for now it just calls the basic "5" default function
@@ -241,6 +256,18 @@ document
     // builtNetwork = []; //This alone doesn't work in resetting it
     console.warn(builtNetwork);
   });
+
+  document
+  .querySelector(".sizeMinusButton")
+  .addEventListener("click", function () {
+    document.querySelector(".sizeOutput").textContent = networkSize--;
+    console.warn(`Network Base Level At ${networkSize}`);
+
+    document
+    .querySelector(".sizeMinusButton")
+    .addEventListener("click", function () {
+      document.querySelector(".sizeOutput").textContent = networkSize--;
+      console.warn(`Network Base Level At ${networkSize}`);
 
 //next:
 /*
