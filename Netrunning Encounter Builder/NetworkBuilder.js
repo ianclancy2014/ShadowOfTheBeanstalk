@@ -96,7 +96,7 @@ function iterator() {
 //This function builds the Network
 //It will eventually just be a calling the determinSize and determineDifficulty functions
 function buildNetwork() {
-  tempDifficultyLevel = difficultyLevel;
+  tempNetworkSize = networkSize;
 
   determinSize();
   console.log(builtNetwork);
@@ -105,14 +105,14 @@ function buildNetwork() {
   determineDifficulty();
 }
 
-function buildICE() {
-  let z = Math.floor(Math.random() * basicIce.length);
-  while (builtICE.length < builtNetwork.length) {
-    console.log("Building ICE");
-    z = Math.floor(Math.random() * basicIce.length);
-    builtICE.push(basicIce[z]);
-  }
-}
+// function buildICE() {
+//   let z = Math.floor(Math.random() * basicIce.length);
+//   while (builtICE.length < builtNetwork.length) {
+//     console.log("Building ICE");
+//     z = Math.floor(Math.random() * basicIce.length);
+//     builtICE.push(basicIce[z]);
+//   }
+// }
 
 //This will be the prototype for the 2 different selectors: the size and difficulty
 
@@ -121,25 +121,24 @@ let tempNetworkSize = 4; //THis will be changed to the value that the user selec
 let tempBuiltICE = []; //This will be changed to the builtICE array
 
 function determinSize() {
-  while (difficultyLevel > 0) {
+  while (networkSize > 0) {
     b = systems[j];
     iterator();
     if (insideList == true) {
       builtNetwork.push(systems[j]);
     } else {
-      difficultyLevel = difficultyLevel + 1;
+      networkSize = networkSize + 1;
     }
     insideList = true;
     j = Math.floor(Math.random() * systems.length);
-    difficultyLevel = difficultyLevel - 1;
-    console.log(insideList);
+    networkSize = networkSize - 1;
   }
 }
 
 function determineDifficulty() {
   let baseICEValues = [];
   while (baseICEValues.length < tempNetworkSize) {
-    let z = Math.floor(Math.random() * tempDifficultyLevel + 1);
+    let z = Math.floor(Math.random() * difficultyLevel + 1);
     baseICEValues.push(z);
   }
   for (let item of baseICEValues) {
@@ -231,7 +230,7 @@ document
   .querySelector(".difficultyMinusButton")
   .addEventListener("click", function () {
     document.querySelector(".difficultyOutput").textContent = difficultyLevel--;
-    console.warn(`Network Base Level At ${difficultyLevel}`);
+    console.warn(`Difficulty At ${difficultyLevel}`);
     // console.warn(tempDifficultyLevel);
     //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
     //but it isn't displaying correctly, so the problem might be elsewhere
@@ -241,7 +240,7 @@ document
   .querySelector(".difficultyPlusButton")
   .addEventListener("click", function () {
     document.querySelector(".difficultyOutput").textContent = difficultyLevel++;
-    console.warn(`Network Base Level At ${difficultyLevel}`);
+    console.warn(`Difficulty At ${difficultyLevel}`);
     // console.warn(tempDifficultyLevel);
     //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
     //but it isn't displaying correctly, so the problem might be elsewhere
@@ -257,17 +256,20 @@ document
     console.warn(builtNetwork);
   });
 
-  document
+document
   .querySelector(".sizeMinusButton")
   .addEventListener("click", function () {
     document.querySelector(".sizeOutput").textContent = networkSize--;
-    console.warn(`Network Base Level At ${networkSize}`);
+    console.error();
+    `Network Size At ${networkSize}`;
+  });
 
-    document
-    .querySelector(".sizeMinusButton")
-    .addEventListener("click", function () {
-      document.querySelector(".sizeOutput").textContent = networkSize--;
-      console.warn(`Network Base Level At ${networkSize}`);
+document
+  .querySelector(".sizePlusButton")
+  .addEventListener("click", function () {
+    document.querySelector(".sizeOutput").textContent = networkSize++;
+    console.error(`Network Size At ${networkSize}`);
+  });
 
 //next:
 /*
