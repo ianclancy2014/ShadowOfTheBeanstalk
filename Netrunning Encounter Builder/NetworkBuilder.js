@@ -73,15 +73,6 @@ let extremeIce = ["Janus 1.0", "Shinobi", "Victor 2.0"];
 let j = Math.floor(Math.random() * systems.length);
 let b = systems[j];
 
-//This is a temporary function that'll determine difficulty of network until I can
-//  build the part of the tool that takes input from the user
-// function determineDifficulty() {
-//   difficultyLevel = Math.floor(Math.random() * 5 + 1);
-//   console.log("Difficulty level " + difficultyLevel);
-//   return difficultyLevel;
-//   // console.log("The difficulty of this networm is " + difficultyLevel);
-// }
-
 //This function iterates through the built network Array
 function iterator() {
   for (let item of builtNetwork) {
@@ -106,21 +97,11 @@ function buildNetwork() {
   console.log(`Defended by: ${tempBuiltICE}`);
 }
 
-// function buildICE() {
-//   let z = Math.floor(Math.random() * basicIce.length);
-//   while (builtICE.length < builtNetwork.length) {
-//     console.log("Building ICE");
-//     z = Math.floor(Math.random() * basicIce.length);
-//     builtICE.push(basicIce[z]);
-//   }
-// }
-
-//This will be the prototype for the 2 different selectors: the size and difficulty
-
 let tempNetworkSize = 4; //THis will be changed to the value that the user selects for size
-// let tempDifficultyLevel = 5; //This will be changed to the value selected for difficulty
 let tempBuiltICE = []; //This will be changed to the builtICE array
 
+//This function 'builds' and then 'populates' an array (the network) based on the
+//  network size selected by the user
 function determinSize() {
   while (networkSize > 0) {
     b = systems[j];
@@ -136,6 +117,8 @@ function determinSize() {
   }
 }
 
+//This function 'builds' and then 'populates' the ICE array (the network's defenses)
+//  based on the difficulty selected by the user
 function determineDifficulty() {
   let baseICEValues = [];
   while (baseICEValues.length < tempNetworkSize) {
@@ -200,7 +183,7 @@ function determineDifficulty() {
         break;
       case 5:
         console.log("Difficulty 5!");
-        //10/60/30 split
+        //10/60/30 split Might have to up this one cuz it doesn't ultimately select a high difficulty very often
         m = Math.floor(Math.random() * 100);
         if (m <= 10) {
           n = Math.floor(Math.random() * basicIce.length);
@@ -221,19 +204,14 @@ function determineDifficulty() {
   console.log(`Basice ICE Values are: ${baseICEValues}`);
 }
 
-// determineDifficulty();
-
 //*****Doesn't quite work yet in the UI. It goes one more in the direction it's going
 //based on what I'm clicking, like it has momentum or something
-//This section determines how the program handles the input for the buttons
+//This section handles the code for the buttons the user will use to select the network
 document
   .querySelector(".difficultyMinusButton")
   .addEventListener("click", function () {
     document.querySelector(".difficultyOutput").textContent = difficultyLevel--;
     console.warn(`Difficulty At ${difficultyLevel}`);
-    // console.warn(tempDifficultyLevel);
-    //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
-    //but it isn't displaying correctly, so the problem might be elsewhere
   });
 
 document
@@ -241,19 +219,12 @@ document
   .addEventListener("click", function () {
     document.querySelector(".difficultyOutput").textContent = difficultyLevel++;
     console.warn(`Difficulty At ${difficultyLevel}`);
-    // console.warn(tempDifficultyLevel);
-    //Okay, so this works in that it actually changes the tempDifficultyLevel value correctly,
-    //but it isn't displaying correctly, so the problem might be elsewhere
   });
 
 document
-  .querySelector(".difficultyGenerateButton")
+  .querySelector(".networkGenerateButton")
   .addEventListener("click", function () {
-    //This is the part that will handle the network generation part
-    //for now it just calls the basic "5" default function
     buildNetwork();
-    // builtNetwork = []; //This alone doesn't work in resetting it
-    // console.warn(builtNetwork);
   });
 
 document
@@ -290,9 +261,6 @@ Next I need to make it so that:
     pulls from the different difficulty levels, so that it's not all just one type of ICE
 
 
-I need to split the Network Dificulty user selection into 2 different functions that work almost
-  the same way; one that allows the user to set the network size, and one that allows the user to 
-  set the network difficulty which will determine the random ICE that protects each node
 
 
 I need to have 2 selections for the user:
