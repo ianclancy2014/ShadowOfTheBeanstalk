@@ -99,10 +99,11 @@ function buildNetwork() {
   tempNetworkSize = networkSize;
 
   determinSize();
-  console.log(builtNetwork);
   // buildICE();
   // console.log("ICE Encountered: " + builtICE);
   determineDifficulty();
+  console.log(`The network is: ${builtNetwork}`);
+  console.log(`Defended by: ${tempBuiltICE}`);
 }
 
 // function buildICE() {
@@ -218,7 +219,6 @@ function determineDifficulty() {
     }
   }
   console.log(`Basice ICE Values are: ${baseICEValues}`);
-  console.log(tempBuiltICE);
 }
 
 // determineDifficulty();
@@ -253,7 +253,7 @@ document
     //for now it just calls the basic "5" default function
     buildNetwork();
     // builtNetwork = []; //This alone doesn't work in resetting it
-    console.warn(builtNetwork);
+    // console.warn(builtNetwork);
   });
 
 document
